@@ -11,6 +11,7 @@ import {
   Accelerometer
 } from 'expo';
 
+const THRESHOLD = 800;
 export class ShakeEventExpo {
   static addListener(handler) {
     let 
@@ -25,7 +26,7 @@ export class ShakeEventExpo {
   
         let speed = Math.abs(x + y + z - last_x - last_y - last_z) / diffTime * 10000;
   
-        if ( speed > 800 ) {
+        if ( speed > THRESHOLD ) {
           console.log("sensor", "shake detected w/ speed: " + speed);
           handler();
         }
